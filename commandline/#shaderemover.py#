@@ -1,0 +1,32 @@
+
+
+def main():
+    filepath = filedialog.askopenfilename()
+    print(filepath)
+    if filepath:
+        pass
+    else:
+        print("No file selected")
+        return
+        
+        try:
+            im_raw = Image.open(filepath)
+        except:
+            print("Cannot Open File")
+            
+            return
+        
+        if im_raw == None:
+            print("Cannot Open File")
+            return
+
+        gray_img = ImageOps.grayscale(im_raw)
+        gray_img = np.array(gray_img)
+        gray_img = gray_img / 255.0
+        w_orig = gray_img.shape[1]
+        h_orig = gray_img.shape[0]
+        
+        self.shadeless = removeShade(gray_img, 100)
+
+
+if __name__ == "__main__":
