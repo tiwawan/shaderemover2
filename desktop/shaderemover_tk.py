@@ -98,7 +98,7 @@ class Main(Frame):
         w_orig = gray_img.shape[1]
         h_orig = gray_img.shape[0]
         
-        self.shadeless = removeShade(gray_img)
+        self.shadeless = removeShade(gray_img, 100)
 
         # make small image for preview
         if w_orig >= h_orig and w_orig > 1000:
@@ -134,27 +134,6 @@ class Main(Frame):
         except:
             print("Unexpected error:" + str(sys.exc_info()))
         print("saved")
-
-def removeShade(im_orig):
-
-    w_orig = im_orig.shape[1]
-    h_orig = im_orig.shape[0]
-
-    im_resize = transform.resize(im_orig, (100,100))
-    
-    L, S = separateTVAndL1(im_resize, 0.2)
-
-    L_origsize = transform.resize(L, (h_orig, w_orig))
-
-    S_origsize = im_orig - L_origsize
-
-    minS = np.min(S_origsize)
-
-    S_origsize = S_origsize - minS
-    S_origsize = S_origsize / (-minS)
-    #S_origsize[S_origsize<0] = 0
-    
-    return S_origsize
     
 
 if __name__ == '__main__':
