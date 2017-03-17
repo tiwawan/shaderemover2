@@ -14,7 +14,7 @@ import sys
 import numpy as np
 import scipy.misc as misc
 from skimage import transform
-from PIL import Image, ImageOps, ImageQt
+from PIL import Image, ImageOps
 import math
 
 from separateTVAndL1 import *
