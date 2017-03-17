@@ -6,7 +6,7 @@ import scipy.misc as misc
 import os.path as path
 
 def main(filepath, outpath):
-    print(filepath)
+
     try:
         im_raw = Image.open(filepath)
     except:
@@ -30,7 +30,7 @@ def main(filepath, outpath):
 
 if __name__ == "__main__":
     argvs = sys.argv
-    print(argvs[1])
+
     argc = len(argvs)
 
     if argc <= 1:
